@@ -24,6 +24,8 @@ namespace PotatoStudio
         (void) io;
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;
+        io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+        io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 
         ImGui::StyleColorsDark();
 
@@ -40,6 +42,7 @@ namespace PotatoStudio
             ImGui_ImplOpenGL3_NewFrame();
             ImGui_ImplGlfw_NewFrame();
             ImGui::NewFrame();
+            ImGui::DockSpaceOverViewport(0, ImGui::GetMainViewport(), ImGuiDockNodeFlags_PassthruCentralNode);
 
             if (ImGui::BeginMainMenuBar())
             {
@@ -55,12 +58,25 @@ namespace PotatoStudio
                 ImGui::EndMainMenuBar();
             }
 
+            ImGui::Begin("Window A");
+            ImGui::Text("Hello, World");
+            ImGui::End();
+
+            ImGui::Begin("Window B");
+            ImGui::Text("Hello, World");
+            ImGui::End();
+
             ImGui::Render();
 
             glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
             glClear(GL_COLOR_BUFFER_BIT);
 
             ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+            GLFWwindow* backup_current_context = glfwGetCurrentContext();
+            ImGui::UpdatePlatformWindows();
+            ImGui::RenderPlatformWindowsDefault();
+            glfwMakeContextCurrent(backup_current_context);
 
             m_Window->Update();
         }
