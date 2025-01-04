@@ -23,3 +23,5 @@ set(LIBRARIES
 
 include(libs/Libraries.cmake)
 build_libraries(${PROJECT_NAME} "${PROJECT_SOURCE_DIR}" "${LIBRARIES}")
+
+target_link_options(${PROJECT_NAME} PRIVATE -static)
