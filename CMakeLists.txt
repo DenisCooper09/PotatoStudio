@@ -25,3 +25,5 @@ include(libs/Libraries.cmake)
 build_libraries(${PROJECT_NAME} "${PROJECT_SOURCE_DIR}" "${LIBRARIES}")
 
 target_link_options(${PROJECT_NAME} PRIVATE -static)
+
+file(COPY "${PROJECT_SOURCE_DIR}/res" DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin")
