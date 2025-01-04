@@ -42,7 +42,6 @@ Source: "C:\dev\avr\PotatoStudio\cmake-build-release\bin\imgui.ini"; DestDir: "{
 
 [Icons]
 Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 Name: "{userdesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; \
 IconFilename: "{app}\res\icon.ico"; Tasks: desktopicon
