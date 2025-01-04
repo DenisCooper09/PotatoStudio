@@ -1,5 +1,8 @@
 #include "Window.hpp"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
 namespace PotatoStudio
 {
 
@@ -15,6 +18,11 @@ namespace PotatoStudio
         glfwSetFramebufferSizeCallback(m_NativeWindow, FramebufferSizeCallback);
 
         glfwMakeContextCurrent(m_NativeWindow);
+
+        GLFWimage images[1];
+        images[0].pixels = stbi_load("res/icon.png", &images[0].width, &images[0].height, nullptr, 4);
+        glfwSetWindowIcon(m_NativeWindow, 1, images);
+        stbi_image_free(images[0].pixels);
 
         if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress))
         {
@@ -50,6 +58,10 @@ namespace PotatoStudio
         return m_NativeWindow;
     }
 
+    void Window::SetKeyCallback(GLFWkeyfun callback)
+    {
+        glfwSetKeyCallback(m_NativeWindow, callback);
+    }
 
     void Window::ErrorCallback(int error_code, const char *description)
     {

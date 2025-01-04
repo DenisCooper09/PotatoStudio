@@ -11,6 +11,7 @@
 
 #include <format>
 #include <string>
+#include <vector>
 
 namespace PotatoStudio
 {
@@ -26,6 +27,7 @@ namespace PotatoStudio
         bool ShouldClose();
         void Update();
         GLFWwindow *GetNativeWindow();
+        void SetKeyCallback(GLFWkeyfun callback);
 
     private:
         static void ErrorCallback(int error_code, const char *description);
