@@ -262,6 +262,7 @@ namespace PotatoStudio
                 {
                     s_DynamicsFileIndex++;
                     ReadDynamicsDataFile();
+                    break;
                 }
                 case GLFW_KEY_LEFT_BRACKET:
                 {
